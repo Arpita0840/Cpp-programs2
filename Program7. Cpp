@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+
+    virtual int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+};
+
+class Derived : public Base {
+public:
+  
+    int sum(int a, int b, int c) override {
+        return a + b + c;
+    }
+
+    int sumFromBase(int a, int b, int c) {
+        return Base::sum(a, b, c);  // Calls the base class's sum function
+    }
+};
+
+int main() {
+    Base baseObj;
+    Derived derivedObj;
+
+    int num1 = 5, num2 = 10, num3 = 15;
+
+    cout << "Sum using base class object: " << baseObj.sum(num1, num2, num3) << endl;
+
+    cout << "Sum using derived class object (overridden function): " << derivedObj.sum(num1, num2, num3) << endl;
+
+    cout << "Sum from base class using derived class object: " << derivedObj.sumFromBase(num1, num2, num3) << endl;
+
+    return 0;
+}
