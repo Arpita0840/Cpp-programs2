@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <typename T>
+class Student {
+private:
+    T name;
+    T department;
+    T course;
+    int age;
+
+public:
+    Student(T n, int a, T dept, T crs) : name(n), age(a), department(dept), course(crs) {}
+
+    void displayStudentDetails() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Department: " << department << endl;
+        cout << "Course: " << course << endl;
+    }
+};
+
+int main() {
+
+    Student<string> student1("Alice", 20, "Computer Science", "Data Structures");
+    Student<string> student2("Bob", 21, "Mechanical Engineering", "Thermodynamics");
+
+    cout << "Student 1 Details:" << endl;
+    student1.displayStudentDetails();
+
+    cout << "\nStudent 2 Details:" << endl;
+    student2.displayStudentDetails();
+
+    return 0;
+}
