@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Number {
+private:
+    int value;
+
+public:
+    // Constructor to initialize the number
+    Number(int v) : value(v) {}
+
+    // Declare PrimeChecker as a friend class
+    friend class PrimeChecker;
+};
+
+
+class PrimeChecker {
+public:
+    
+    bool isPrime(const Number &num) {
+        if (num.value <= 1) return false;
+        for (int i = 2; i * i <= num.value; i++) {
+            if (num.value % i == 0) return false;
+        }
+        return true;
+    }
+};
+
+int main() {
+    int num;
+    cout << "Enter a number to check if it is prime: ";
+    cin >> num;
+
+    Number number(num);
+    PrimeChecker checker;
+
+    if (checker.isPrime(number))
+        cout << num << " is a prime number." << endl;
+    else
+        cout << num << " is not a prime number." << endl;
+
+    return 0;
+}
