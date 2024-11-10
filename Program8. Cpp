@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+T add(T a, T b) {
+    return a + b;
+}
+
+template <typename T>
+T add(T a, T b, T c) {
+    return a + b + c;
+}
+
+
+template <typename T>
+T add(T a, T b, T c, T d) {
+    return a + b + c + d;
+}
+
+int main() {
+    
+    cout << "Sum of two integers: " << add(5, 10) << endl;
+    cout << "Sum of three doubles: " << add(5.5, 10.5, 15.5) << endl;
+    cout << "Sum of four floats: " << add(1.1f, 2.2f, 3.3f, 4.4f) << endl;
+
+    return 0;
+}
