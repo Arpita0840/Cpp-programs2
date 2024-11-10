@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+class A {
+private:
+    int privateDataA;
+
+protected:
+    int protectedDataA;
+
+public:
+    A(int pA, int pProtectedA) : privateDataA(pA), protectedDataA(pProtectedA) {}
+
+  
+    friend class FriendClass;
+};
+
+class B {
+private:
+    int privateDataB;
+
+protected:
+    int protectedDataB;
+
+public:
+    B(int pB, int pProtectedB) : privateDataB(pB), protectedDataB(pProtectedB) {}
+
+    
+    friend class FriendClass;
+};
+
+class C {
+private:
+    int privateDataC;
+
+protected:
+    int protectedDataC;
+
+public:
+    C(int pC, int pProtectedC) : privateDataC(pC), protectedDataC(pProtectedC) {}
+
+    
+    friend class FriendClass;
+};
+
+class FriendClass {
+public:
+    void displayA(const A &a) {
+        cout << "Class A - Private Data: " << a.privateDataA << ", Protected Data: " << a.protectedDataA << endl;
+    }
+
+    void displayB(const B &b) {
+        cout << "Class B - Private Data: " << b.privateDataB << ", Protected Data: " << b.protectedDataB << endl;
+    }
+
+    void displayC(const C &c) {
+        cout << "Class C - Private Data: " << c.privateDataC << ", Protected Data: " << c.protectedDataC << endl;
+    }
+};
+
+int main() {
+    
+    A a(10, 20);
+    B b(30, 40);
+    C c(50, 60);
+
+    // Create object of FriendClass
+    FriendClass friendObj;
+
+    friendObj.displayA(a);
+    friendObj.displayB(b);
+    friendObj.displayC(c);
+
+    return 0;
+}
